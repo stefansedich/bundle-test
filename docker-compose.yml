@@ -1,0 +1,24 @@
+version: '2.2'
+services:
+  a:
+    image: ruby
+    working_dir: /app
+    command: bundle install
+    volumes:
+      - ./:/app
+      - gem-cache:/.gems
+    environment:
+      - GEM_HOME=/.gems
+      - BUNDLE_PATH=/.gems
+  b:
+    image: ruby
+    working_dir: /app
+    command: bundle install
+    volumes:
+      - ./:/app
+      - gem-cache:/.gems
+    environment:
+      - GEM_HOME=/.gems
+      - BUNDLE_PATH=/.gems
+volumes:
+  gem-cache:
